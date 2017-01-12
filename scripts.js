@@ -84,6 +84,19 @@ $(function() {
 
 			taskCell.addClass('todo-task');
 			taskCell.html(app.currentTask);
+		},
+
+		saveTask: function() {
+			var newTask = $('.edit-input').val();
+
+			todos.forEach(function(todo) {
+				if(app.currentTask === todo.task) {
+					todo.task = newTask;
+				}
+			});
+
+			app.currentTask = newTask;
+			app.exitEditMode.call(this);
 		}
 	};
 
@@ -94,4 +107,5 @@ $(function() {
 	$('table').on('click', '.todo-task', app.toggleTodo);
 	$('table').on('click', '.edit-button', app.enterEditMode);
 	$('table').on('click', '.cancel-button', app.exitEditMode);
+	$('table').on('click', '.save-button', app.saveTask);
 });
