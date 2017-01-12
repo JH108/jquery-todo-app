@@ -97,6 +97,18 @@ $(function() {
 
 			app.currentTask = newTask;
 			app.exitEditMode.call(this);
+		}, 
+
+		deleteTask: function() {
+			var taskToDelete = $(this).parent('td').prev().text();
+			var found = false;
+			todos.forEach(function(todo, index){
+				if(found === false && taskToDelete === todo.task) {
+					todos.splice(index, 1);
+					found = true;
+				}
+			});
+			app.showTodos();
 		}
 	};
 
@@ -107,5 +119,6 @@ $(function() {
 	$('table').on('click', '.todo-task', app.toggleTodo);
 	$('table').on('click', '.edit-button', app.enterEditMode);
 	$('table').on('click', '.cancel-button', app.exitEditMode);
-	$('table').on('click', '.save-button', app.saveTask);
+	$('table').on('click', '.save-button', app.saveTask);	
+	$('table').on('click', '.delete-button', app.deleteTask);
 });
