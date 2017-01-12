@@ -32,6 +32,22 @@ $(function() {
 			});
 		},
 
+		addTodo: function(event) {
+			event.preventDefault();
+
+			var createInput = $('#create-input');
+			var createInputValue = createInput.val();
+			
+			todos.push({
+				task: createInputValue,
+				isCompleted: false
+			});
+
+			createInput.val('');
+
+			app.showTodos();
+		},
+
 		toggleTodo: function() {
 			todos.forEach(function(todo) {
 				if (todo.task === $(this).text()) {
@@ -45,5 +61,6 @@ $(function() {
 	app.showTodos();
 
 	//$('.todo-task').on('click', app.toggleTodo);
+	$('#create-form').on('submit', app.addTodo);
 	$('table').on('click', '.todo-task', app.toggleTodo)
 });
