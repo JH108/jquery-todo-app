@@ -39,7 +39,24 @@ $(function() {
 
 			var createInput = $('#create-input');
 			var createInputValue = createInput.val();
-			
+
+			var errorMessage = null;
+
+			if(!createInputValue) {
+				errorMessage = 'Task cannot be empty.';
+			} else {
+				todos.forEach(function(todo) {
+					if(todo.task === createInputValue) {
+						errorMessage = 'Task already exists.';
+					}
+				});
+			}
+
+			if(errorMessage) {
+				app.showError(errorMessage);
+				return;
+			}
+
 			todos.push({
 				task: createInputValue,
 				isCompleted: false
@@ -109,13 +126,23 @@ $(function() {
 				}
 			});
 			app.showTodos();
+		},
+
+		showError: function(errorMessage) {
+			$('.error-message').html(errorMessage).slideDown();
+		},
+
+		clearError: function() {
+			$('.error-message').fadeOut();
 		}
+
 	};
 
 	app.showTodos();
 
 	//$('.todo-task').on('click', app.toggleTodo);
 	$('#create-form').on('submit', app.addTodo);
+	$('#create-input').on('keyup', app.clearError);
 	$('table').on('click', '.todo-task', app.toggleTodo);
 	$('table').on('click', '.edit-button', app.enterEditMode);
 	$('table').on('click', '.cancel-button', app.exitEditMode);
