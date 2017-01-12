@@ -47,11 +47,20 @@ table {
 --------------
 */
 
-body {
+/*body {
 	display: flex;
 	justify-content: center;
-}
+}*/
 
+/*
+--------------
+	Custom Styles
+--------------
+*/
+
+body {
+	margin: 20px 0 0 20px;
+}
 /*
 --------------
 	Table Styles
@@ -68,3 +77,18 @@ body {
 	color: #09984D;
 	cursor: pointer;
 }
+
+/*
+--------------
+	Buttons
+--------------
+*/
+
+.save-button {
+	display: none;
+}
+
+.cancel-button {
+	display: none;
+}
+
