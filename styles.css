@@ -84,6 +84,11 @@ body {
 --------------
 */
 
+form button {
+	border-radius: 5px;
+	background: #089945;
+}
+
 .save-button {
 	display: none;
 }
