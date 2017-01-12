@@ -40,3 +40,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/*
+--------------
+	Flex Box
+--------------
+*/
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+/*
+--------------
+	Table Styles
+--------------
+*/
+
+.todo-task {
+	color: #8A2708;
+	cursor: pointer;	
+
+}
+
+.is-completed {
+	color: #09984D;
+	cursor: pointer;
+}
